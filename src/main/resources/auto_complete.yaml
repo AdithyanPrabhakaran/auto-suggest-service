@@ -1,0 +1,57 @@
+openapi: 3.0.3
+info:
+  title: API Specification for auto complete search
+  description: |-
+    A simple API that allows fetch operation:
+    - fetch text for auto complete
+  version: 1.0-SNAPSHOT
+servers:
+  - url: http://localhost:9000
+
+tags:
+  - name: AutoComplete
+    description: Operations of auto complete
+paths:
+  /api/v1/auto-completes:
+    get:
+      tags:
+        - AutoComplete
+      summary: Get search information
+      description: Get information using auto complete
+      operationId: getSearchAutoComplete
+      parameters:
+        - in: query
+          name: searchText
+          schema:
+            type: string
+          required: true
+          description: text to search
+
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResult'
+        404:
+          description: not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+components:
+  schemas:
+    SearchResult:
+      type: array
+      items:
+        type: string
+      example: ["str1", "str2", "str3"]
+      properties:
+        names:
+          type: string
+    NotFoundError:
+      type: object
+      properties:
+        message:
+          type: string

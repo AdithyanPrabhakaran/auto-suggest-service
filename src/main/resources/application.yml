@@ -1,0 +1,35 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:searchDb
+    driverClassName: org.h2.Driver
+    username: password
+    password: password
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    properties:
+      hibernate:
+        ddl-auto: 'create-drop'
+        search:
+          backend:
+            type: lucene
+            directory:
+              type: local-heap
+  h2:
+    console:
+      enabled: true
+springdoc:
+  swagger-ui:
+    path: /auto-complete/swagger-ui.html
+    disable-swagger-default-url: true
+  api-docs:
+    path: /api-docs
+    enabled: true
+
+# give absolute file path in-case of local file system when running in ide
+#ex : c:/user/data/input.txt
+
+# in case of docker deployment leave it empty.
+input:
+  file:
+    location: ''
