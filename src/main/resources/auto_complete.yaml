@@ -6,7 +6,7 @@ info:
     - fetch text for auto complete
   version: 1.0-SNAPSHOT
 servers:
-  - url: http://localhost:9000
+  - url: http://localhost:9091
 
 tags:
   - name: AutoComplete

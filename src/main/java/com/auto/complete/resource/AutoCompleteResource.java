@@ -16,7 +16,7 @@ public class AutoCompleteResource implements AutoCompleteApi {
 
     @Override
     public ResponseEntity<List<String>> getSearchAutoComplete(String searchText) {
-        var searchResult = searchService.fetch_suggestions(searchText);
+        var searchResult = searchService.fetchSuggestions(searchText);
         return ResponseEntity.ok(searchResult);
     }
 }

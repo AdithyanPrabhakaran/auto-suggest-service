@@ -18,7 +18,7 @@ public class SearchService {
    private final SearchRepository searchRepository;
    private final String file;
 
-  public ArrayList<String> load_data() throws IOException {
+  public ArrayList<String> loadData() throws IOException {
     var dataList = new ArrayList<String>();
     log.info("input file :{}",file);
     try(BufferedReader reader = new BufferedReader(new FileReader(file))){
@@ -27,11 +27,11 @@ public class SearchService {
         dataList.add(line);
       }
     }
-    searchRepository.persist_search_data(dataList);
+    searchRepository.persistSearchData(dataList);
     return dataList;
   }
 
-  public List<String> fetch_suggestions(String text)  {
+  public List<String> fetchSuggestions(String text)  {
     List<String> searchResult;
     try {
       searchResult = searchRepository.getSearchResult(text);

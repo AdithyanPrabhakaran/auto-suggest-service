@@ -28,7 +28,7 @@ class AutoCompleteResourceTest {
     @Test
     void getSearchAutoComplete() throws Exception {
 
-      when(searchService.fetch_suggestions("john")).thenReturn(List.of("john","jacob"));
+      when(searchService.fetchSuggestions("john")).thenReturn(List.of("john","jacob"));
 
       RequestBuilder request = get(API_URL)
               .queryParam("searchText","john")

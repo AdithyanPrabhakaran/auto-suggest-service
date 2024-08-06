@@ -14,7 +14,7 @@ public class SearchTextApplication {
   public static void main(String[] args) throws IOException {
     var appContext = SpringApplication.run(SearchTextApplication.class, args);
     SearchService searchService = (SearchService) appContext.getBean("searchService");
-    var data = searchService.load_data();
+    var data = searchService.loadData();
     assert data.size() > 1 : "error in data loading";
   }
 }

@@ -14,6 +14,8 @@ import java.io.IOException;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.anyList;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -32,8 +34,10 @@ class SearchServiceTest {
   @Test
   @DisplayName("should read data from input file and persist")
   void load_data() throws IOException {
-    var result = searchService.load_data();
+    doNothing().when(searchRepository).persistSearchData(anyList());
+    var result = searchService.loadData();
     assertThat(result).hasSizeGreaterThan(1);
+    assertThat(result).containsExactly("Jacob","Michael");
   }
 
   @Test
@@ -42,7 +46,7 @@ class SearchServiceTest {
 
     List<String> expectedResult = List.of("john", "jacob", "henry");
     when(searchRepository.getSearchResult("john")).thenReturn(expectedResult);
-    var result = searchService.fetch_suggestions("john");
+    var result = searchService.fetchSuggestions("john");
     assertThat(result).containsExactly("john", "jacob", "henry");
   }
 }
