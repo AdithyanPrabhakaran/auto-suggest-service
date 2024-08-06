@@ -32,7 +32,7 @@ For further reference, please consider the following sections:
 * mvn clean install
 * open terminal for project root directory where DockerFile exists
     * build an image -
-        * docker build -t auto-complete-image:latest
+        * docker build -t auto-complete-image:latest .
 
     * Run an image
 
